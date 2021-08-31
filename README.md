@@ -1,3 +1,10 @@
+* [effect](#effect)
+* [Introduction](#introduction)
+  * [why we do this](#why-we-do-this)
+  * [who is this for](#who-is-this-for)
+  * [Prepared before](#prepared-before)
+* [Basic demo](#basic-demo)
+* [reference](#reference)
 
 # effect
 
@@ -37,7 +44,7 @@ Please
 
 # Basic demo
 
-[BasicDemo](https://github.com/lewei50/iammeter/tree/master/LocalMonitoringJS/BasicDemo)
+[BasicDemo](\BasicDemo)
 
 This is a simple demo to show how to use the local monitoring webpage.
 
