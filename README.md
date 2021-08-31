@@ -44,7 +44,7 @@ Please
 
 # Basic demo
 
-[BasicDemo](\BasicDemo)
+[BasicDemo](https://github.com/lewei50/iammeterJS/tree/main/BasicDemo)
 
 This is a simple demo to show how to use the local monitoring webpage.
 
