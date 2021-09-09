@@ -8,9 +8,10 @@
 
 # effect
 
-| Number | name  | url                                                          | description    |                                                              |
-| ------ | ----- | ------------------------------------------------------------ | -------------- | ------------------------------------------------------------ |
-| 1      | basic | [basic.html](https://lewei50.github.io/iammeterJS/BasicDemo/Basic.html) | simple example | ![image-20210831110005691](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210831110005691.png) |
+| Number | name   | url                                                          | description             |                                                              |
+| ------ | ------ | ------------------------------------------------------------ | ----------------------- | ------------------------------------------------------------ |
+| 1      | basic  | [basic.html](https://lewei50.github.io/iammeterJS/BasicDemo/Basic.html) | simple example          | ![image-20210831110005691](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210831110005691.png) |
+| 2      | basic2 | [demo2.html](https://lewei50.github.io/iammeterJS/demo2/index.html) | add some simple element | ![image-20210909105701601](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210909105701601.png) |
 
 # Introduction
 
