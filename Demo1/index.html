@@ -11,11 +11,32 @@
     </head>
     <body >
         <img src="https://cdn.iammeter.com/content/em2021/images/iammeter-logo.svg" width="200" alt="iammeter" />
+        <img src="./images/setting.jpg" width="25" alt="setting" id="settingIcon" class="settingIcon" />
+        <div class="setting" id="settingBlock">
+            <div>
+                <span>mqtt user name<input id="mqttUserName" value=""></span>
+                <span>mqtt password<input id="mqttPassword" value="" type="password"></span>
+                <button type="button" id="btnConnect">Connect</button>
+            </div>
+            <div>
+                <span><ul id="snList"></ul></span>
+                <span>device name<input id="displayName"></span>
+                <span>sn<input id="devSn"></span>
+                <span>
+                    <label><input name="snType" type="radio" value="1" checked>Single</label>
+                    <label><input name="snType" type="radio" value="3">Three</label>
+                    <button type="button" id="btnAddSn">Add</button>
+                </span>
+            </div>
+            <div>
+                <span>threshold<input id="threshold" value=""></span>
+            </div>
+        </div>
         <div class="groupTitle"><span>Chart Dashboard</span></div>
         <div id="chartContainer" style="width:100%;height:80%;">
             Connecting,waiting for data...
         </div>
-    
+
         <div class="groupTitle"><span>Energy Dashboard</span></div>
         <div id="itemsRealtime" class="icon_flat_rect">
         </div>

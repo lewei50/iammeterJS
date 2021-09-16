@@ -8,10 +8,10 @@
 
 # effect
 
-| Number | name   | url                                                          | description             |                                                              |
-| ------ | ------ | ------------------------------------------------------------ | ----------------------- | ------------------------------------------------------------ |
-| 1      | basic  | [basic.html](https://lewei50.github.io/iammeterJS/BasicDemo/Basic.html) | simple example          | ![image-20210831110005691](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210831110005691.png) |
-| 2      | basic2 | [demo2.html](https://lewei50.github.io/iammeterJS/demo2/index.html) | add some simple element | ![image-20210909105701601](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210909105701601.png) |
+| Number | name  | url                                                          | description                                                  |                                                              |
+| ------ | ----- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1      | basic | [basic.html](https://lewei50.github.io/iammeterJS/BasicDemo/Basic.html) | simple example                                               | ![image-20210831110005691](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210831110005691.png) |
+| 2      | Demo1 | [demo1.html](https://lewei50.github.io/iammeterJS/demo1/index.html) | You can configure your MQTT parameter here. And select which power should be display in the chart. | ![image-20210916150515648](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210916150515648.png) |
 
 # Introduction
 
@@ -50,6 +50,17 @@ Please
 This is a simple demo to show how to use the local monitoring webpage.
 
 ![image-20210824153943618](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210824153943618.png)
+
+# Demo1
+
+[Demo1](https://github.com/lewei50/iammeterJS/tree/main/Demo1)
+
+You can configure your MQTT parameter here.
+And select which power should be display in the chart.![image-20210916150515648](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210916150515648.png)
+
+
+
+![image-20210916150621729](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210916150621729.png)
 
 # reference
 
