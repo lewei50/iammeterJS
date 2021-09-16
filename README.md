@@ -4,6 +4,7 @@
   * [who is this for](#who-is-this-for)
   * [Prepared before](#prepared-before)
 * [Basic demo](#basic-demo)
+* [Demo1](#demo1)
 * [reference](#reference)
 
 # effect
@@ -11,7 +12,7 @@
 | Number | name  | url                                                          | description                                                  |                                                              |
 | ------ | ----- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 1      | basic | [basic.html](https://lewei50.github.io/iammeterJS/BasicDemo/Basic.html) | simple example                                               | ![image-20210831110005691](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210831110005691.png) |
-| 2      | Demo1 | [demo1.html](https://lewei50.github.io/iammeterJS/demo1/index.html) | You can configure your MQTT parameter here. And select which power should be display in the chart. | ![image-20210916150515648](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210916150515648.png) |
+| 2      | Demo1 | [demo1.html](https://lewei50.github.io/iammeterJS/Demo1/index.html) | You can configure your MQTT parameter here. And select which power should be display in the chart. | ![image-20210916150515648](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210916150515648.png) |
 
 # Introduction
 
