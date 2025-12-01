@@ -1,69 +1,85 @@
-* [effect](#effect)
-* [Introduction](#introduction)
-  * [why we do this](#why-we-do-this)
-  * [who is this for](#who-is-this-for)
-  * [Prepared before](#prepared-before)
-* [Basic demo](#basic-demo)
-* [Demo1](#demo1)
-* [reference](#reference)
+# Build Your Own Real-Time Monitoring Dashboard by Subscribing to IAMMETER MQTT Topics
 
-# effect
+This project helps **enthusiasts and beginners** quickly build a custom real-time energy monitoring dashboard—**without needing to write any code manually**.
 
-| Number | name  | url                                                          | description                                                  |                                                              |
-| ------ | ----- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1      | basic | [basic.html](https://lewei50.github.io/iammeterJS/BasicDemo/Basic.html) | simple example                                               | ![image-20210831110005691](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210831110005691.png) |
-| 2      | Demo1 | [demo1.html](https://lewei50.github.io/iammeterJS/Demo1/index.html) | You can configure your MQTT parameter here. And select which power should be display in the chart. | ![image-20210916150515648](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210916150515648.png) |
+All the HTML and JavaScript files in this project were generated directly by **IAMMETER’s GPT Assistant**.
 
-# Introduction
+------
 
+## 1. Install Node.js
 
+Install Node.js (LTS version is recommended) from:
 
-![image-20210825104453255](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210825104453255.png)
+https://nodejs.org/
 
-## why we do this 
+------
 
-Although we have try to integrated more UI useful view in IAMMETER-cloud,it can not cover all requirements.
-So we have make this project,you can easily develop and customize your own monitor view, only by JS code.
+## 2. Download This Project and Configure `config.json`
 
-Such as:
+Edit the `config.json` file and set the following three parameters.
+ These credentials can be found in the guide:
+ https://www.iammeter.com/blog/subscribe-real-time-energy-data-mqtt#iammeter-mqtt-broker-configuration
 
-- Plot all power values in one chart.
-- Display the instant value in a different color when it exceeds the alarm value.
-- etc...
+```
+mqtt_user: "",
+mqtt_pass: "",
+device_sn: ""
+```
 
-## who is this for
+------
 
-IAMMETER-cloud user, who are familiar with JavaScript and has extra monitor view requirements.
+## 3. Install Dependencies
 
-## Prepared before
+After entering the project folder, run:
 
-Please 
-1 [Upgrade your firmware to the latest version](https://imeter.club/topic/11#latest-update-of-iammeter-mqtt-data-upload-interval-setting-net-metering-mode)
-2 [Change the upload mode to MQTT](https://imeter.club/topic/11?sort=recent#11-upload-data-to-iammeter-cloud-using-mqtt)
-3 [change the upload interval to 6 seconds](https://imeter.club/topic/11?sort=recent#21-set-the-data-upload-interval)
+```
+npm install
+```
 
+![image-20251201144840122](https://iammeterglobal.oss-accelerate.aliyuncs.com/img/image-20251201144840122.png)
 
+------
 
-# Basic demo
+## 4. Start the Dashboard
 
-[BasicDemo](https://github.com/lewei50/iammeterJS/tree/main/BasicDemo)
+Visit:
 
-This is a simple demo to show how to use the local monitoring webpage.
+```
+http://localhost:3000
+```
 
-![image-20210824153943618](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210824153943618.png)
+You will see a real-time monitoring dashboard similar to the following:
 
-# Demo1
+![image-20251201142633910](https://iammeterglobal.oss-accelerate.aliyuncs.com/img/image-20251201142633910.png)
 
-[Demo1](https://github.com/lewei50/iammeterJS/tree/main/Demo1)
+------
 
-You can configure your MQTT parameter here.
-And select which power should be display in the chart.![image-20210916150515648](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210916150515648.png)
+### Important Reminder
 
+Before running the dashboard, please ensure that your IAMMETER device is configured to **MQTT mode**:
 
+https://www.iammeter.com/blog/subscribe-real-time-energy-data-mqtt#configure-iammeter-meter-to-use-mqtt-mode
 
-![image-20210916150621729](https://leweidoc.oss-cn-hangzhou.aliyuncs.com/lewei50/img/iammeter/tmpliu/tmpimage-20210916150621729.png)
+![Set meter to MQTT upload mode and configure IAMMETER MQTT Broker parameters](https://iammeterglobal.oss-accelerate.aliyuncs.com/img/image-20251126121416299.png)
 
-# reference
+You may set the **upload interval** to **6 seconds** temporarily for testing.
 
-[How to subscribe real time data from IAMMETER](https://imeter.club/topic/20)
+------
 
+## Recommended Next Step (Very Interesting!)
+
+Once everything is running properly, try this:
+
+Submit the **HTML file** of your dashboard to the IAMMETER GPT Assistant:
+ https://chatgpt.com/g/g-68e9cc3b83408191901b66b524ba5373-iammeter-assistant
+
+Then simply describe the improvements you want—more charts, new layout, custom colors, extra widgets, or any advanced logic.
+
+The assistant can automatically:
+
+- Modify and optimize the existing code
+- Add new functions
+- Create professional UI upgrades
+- Generate entirely new dashboard components
+
+This allows you to develop a customized, advanced monitoring dashboard **even without writing code manually**.
