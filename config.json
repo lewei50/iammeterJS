@@ -1,0 +1,7 @@
+{
+  "MQTT_BROKER": "mqtt.iammeter.com",
+  "MQTT_PORT": 1883,
+  "MQTT_USER": "lewei",
+  "MQTT_PASS": "123456",
+  "DEVICE_SN": "CB0A0CFB"
+}

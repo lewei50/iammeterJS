@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IAMMETER Realtime Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8fafc;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #0d9488;
+    }
+
+    #phases {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .phase {
+      border: 2px solid #0d9488;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      background: #fff;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .phase:hover {
+      transform: scale(1.05);
+    }
+
+    .phase h2 {
+      margin-bottom: 10px;
+      color: #065f46;
+    }
+
+    .data {
+      font-size: 1.1em;
+    }
+
+    .value {
+      font-weight: bold;
+      color: #1d4ed8;
+    }
+
+    #status {
+      margin-top: 20px;
+      font-style: italic;
+      color: gray;
+      font-size: 0.95em;
+    }
+
+    #update-time {
+      color: #2563eb;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    #chart-container {
+      margin-top: 40px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #metric-selector {
+      margin-bottom: 10px;
+      font-size: 1em;
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚡ IAMMETER Realtime Dashboard</h1>
+
+  <div id="phases"></div>
+
+  <!-- 状态栏 -->
+  <p id="status">
+    <span id="connection-status">Connecting to WebSocket...</span>
+    <span id="update-time"></span>
+  </p>
+
+  <!-- ✅ 图表区域 -->
+  <div id="chart-container">
+    <label for="metric-selector">Select metric:</label>
+    <select id="metric-selector">
+      <option value="voltage">Voltage (V)</option>
+      <option value="current">Current (A)</option>
+      <option value="power">Power (W)</option>
+    </select>
+    <canvas id="realtimeChart"></canvas>
+  </div>
+
+  <script>
+    const ws = new WebSocket(`ws://${location.host}`);
+    const phasesDiv = document.getElementById('phases');
+    const connStatus = document.getElementById('connection-status');
+    const updateTime = document.getElementById('update-time');
+    const selector = document.getElementById('metric-selector');
+    const ctx = document.getElementById('realtimeChart').getContext('2d');
+
+    // ================================
+    // ✅ 初始化 Chart.js 图表
+    // ================================
+    const chartData = {
+      labels: [],
+      datasets: [
+        { label: 'Phase A', borderColor: '#ef4444', data: [], fill: false },
+        { label: 'Phase B', borderColor: '#facc15', data: [], fill: false },
+        { label: 'Phase C', borderColor: '#22c55e', data: [], fill: false },
+      ]
+    };
+
+    const chartOptions = {
+      responsive: true,
+      animation: false,
+      scales: {
+        x: { title: { display: true, text: 'Time' } },
+        y: { title: { display: true, text: 'Value' }, beginAtZero: false }
+      }
+    };
+
+    const realtimeChart = new Chart(ctx, {
+      type: 'line',
+      data: chartData,
+      options: chartOptions
+    });
+
+    // ================================
+    // ✅ WebSocket 事件
+    // ================================
+    ws.onopen = () => {
+      connStatus.textContent = "✅ Connected to MQTT server";
+      connStatus.style.color = "green";
+    };
+    ws.onclose = () => {
+      connStatus.textContent = "❌ Disconnected";
+      connStatus.style.color = "red";
+    };
+    ws.onerror = () => {
+      connStatus.textContent = "⚠️ WebSocket error";
+      connStatus.style.color = "orange";
+    };
+
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      phasesDiv.innerHTML = '';
+
+      data.phases.forEach((p, i) => {
+        const phaseLabel = data.type === 'three' ? `Phase ${['A','B','C'][i]}` : 'Single Phase';
+        phasesDiv.innerHTML += `
+          <div class="phase">
+            <h2>${phaseLabel}</h2>
+            <div class="data">Voltage: <span class="value">${p.voltage.toFixed(2)} V</span></div>
+            <div class="data">Current: <span class="value">${p.current.toFixed(2)} A</span></div>
+            <div class="data">Active Power: <span class="value">${p.power.toFixed(2)} W</span></div>
+          </div>
+        `;
+      });
+
+      // 更新时间显示
+      const now = new Date();
+      const formatted = now.toLocaleTimeString();
+      updateTime.textContent = `⏱ Last update: ${formatted}`;
+
+      // ================================
+      // ✅ 图表更新逻辑
+      // ================================
+      const selectedMetric = selector.value; // 用户选择的 metric
+      const nowLabel = now.toLocaleTimeString().split(' ')[0]; // 时间作为横轴标签
+
+      // 保持 labels 最多 30 个
+      if (chartData.labels.length >= 30) {
+        chartData.labels.shift();
+        chartData.datasets.forEach(d => d.data.shift());
+      }
+
+      chartData.labels.push(nowLabel);
+
+      if (data.type === 'three') {
+        const keys = { voltage: 'voltage', current: 'current', power: 'power' };
+        data.phases.forEach((p, i) => {
+          chartData.datasets[i].data.push(p[selectedMetric]);
+        });
+      } else {
+        // 单相设备时，仅用第一个 dataset
+        chartData.datasets[0].data.push(data.phases[0][selectedMetric]);
+      }
+
+      realtimeChart.update();
+    };
+  </script>
+</body>
+</html>
